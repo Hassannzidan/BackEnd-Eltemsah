@@ -1,13 +1,4 @@
-// export class CreateProductDto {
-//   name: string;
-//   description: string;
-//   category: string;
-//   subcategory?: string;
-//   status: 'active' | 'inactive';
-//   images: string[];
-//   tags: string[];
-//   productDetails: any; 
-// }
+
 
 
 import { Type } from 'class-transformer';
@@ -46,6 +37,6 @@ export class CreateProductDto {
   tags: string[];
 
   @IsObject()
-  productDetails: any; // ممكن تعمل له interface لاحقًا
+  productDetails: any;
 }
 

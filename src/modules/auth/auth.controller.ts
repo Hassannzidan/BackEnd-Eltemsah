@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, UnauthorizedException } from '@nestjs/common';
 import { AuthService } from './auth.service';
 
 @Controller('auth')
@@ -6,12 +6,13 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('login')
-  login(@Body() body: { email: string; password: string }) {
-    return this.authService.login(body.email, body.password);
+  async login(@Body() body: { email: string; password: string }) {
+    return await this.authService.validateUser(body.email, body.password);
   }
 
-  @Post('verify-otp')
-  verifyOtp(@Body() body: { email: string; otp: string }) {
-    return this.authService.verifyOtp(body.email, body.otp);
+  @Post('verify-code')
+  async verifyCode(@Body() body: { code: string }) {
+    return await this.authService.verifyFixedCode(body.code);
   }
 }
+

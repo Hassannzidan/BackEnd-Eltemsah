@@ -1,4 +1,3 @@
-// src/schemas/product.schema.ts
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
@@ -19,15 +18,11 @@ export class Product {
   @Prop()
   subcategory?: string;
 
-  // @Prop({ enum: ['active', 'inactive'], default: 'active' })
-  // status: 'active' | 'inactive';
 
   @Prop({ required: true, enum: ['active', 'inactive'], default: 'active' })
   status: 'active' | 'inactive';
 
 
-  // @Prop([String])
-  // images: string[];
   @Prop({ type: [String], default: [] })
   images: string[];
 
@@ -36,6 +31,7 @@ export class Product {
 
   @Prop({ type: Object })
   productDetails: any;
+
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);
