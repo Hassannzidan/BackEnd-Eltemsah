@@ -8,11 +8,8 @@ async function bootstrap() {
   // const app = await NestFactory.create(AppModule);
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
-
-   app.enableCors({
-    origin: (origin, callback) => {
-      callback(null, true); // يسمح لأي دومين
-    },
+  app.enableCors({
+    origin: 'https://eltemsah-caravan.vercel.app',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });
