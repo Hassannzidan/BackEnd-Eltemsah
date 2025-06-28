@@ -26,8 +26,7 @@ async function bootstrap() {
 
   app.enableCors({
     origin: [
-      'http://localhost:4200',
-      'https://eltemsah-caravan.vercel.app', // استبدل باسم موقعك الفعلي
+      '*', // استبدل باسم موقعك الفعلي
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
